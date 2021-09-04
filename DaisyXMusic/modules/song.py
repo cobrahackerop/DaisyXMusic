@@ -50,7 +50,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    m = message.reply("🔎 Finding the song...")
+    m = message.reply("🔎 𝐅𝐢𝐧𝐝𝐢𝐧𝐠 𝐓𝐡𝐞 𝐒𝐨𝐧𝐠...")
     ydl_opts = {"format": "bestaudio/best"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -67,7 +67,7 @@ def song(client, message):
         results[0]["views"]
 
     except Exception as e:
-        m.edit("❌ Found Nothing.\n\nTry another keywork or maybe spell it properly.")
+        m.edit("❌  𝐖𝐡𝐚𝐭 𝐓𝐡𝐚 𝐒𝐨𝐧𝐠 𝐈 𝐖𝐡𝐚𝐧𝐭 𝐓𝐨 𝐏𝐥𝐚𝐲?🙄.")
         print(str(e))
         return
     m.edit("Downloading the song ")
@@ -76,7 +76,7 @@ def song(client, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = "**🎵 Uploaded by DaisyXMusic**"
+        rep = "**🎵 𝐔𝐩𝐥𝐨𝐝𝐞 𝐁𝐲 𝐀𝐥𝐢𝐳𝐚𝐌𝐮𝐬𝐢𝐜**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
@@ -91,7 +91,7 @@ def song(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("❌ Error")
+        m.edit("❌ 𝐄𝐫𝐫𝐨𝐫")
         print(e)
 
     try:
@@ -268,17 +268,17 @@ def time_to_seconds(time):
 async def jssong(_, message):
     global is_downloading
     if len(message.command) < 2:
-        await message.reply_text("/saavn requires an argument.")
+        await message.reply_text("/𝐒𝐚𝐚𝐯𝐧 𝐑𝐞𝐪𝐮𝐢𝐫𝐞𝐬 𝐀𝐧 𝐀𝐫𝐠𝐮𝐦𝐞𝐧𝐭.")
         return
     if is_downloading:
         await message.reply_text(
-            "Another download is in progress, try again after sometime."
+            "𝐀𝐧𝐨𝐭𝐡𝐞𝐫 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐈𝐬 𝐈𝐧 𝐏𝐫𝐨𝐠𝐫𝐞𝐬𝐬, 𝐓𝐫𝐲 𝐀𝐠𝐢𝐧 𝐀𝐟𝐭𝐞𝐫 𝐒𝐨𝐦𝐞𝐓𝐢𝐦𝐞."
         )
         return
     is_downloading = True
     text = message.text.split(None, 1)[1]
     query = text.replace(" ", "%20")
-    m = await message.reply_text("Searching...")
+    m = await message.reply_text("𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠...")
     try:
         songs = await arq.saavn(query)
         if not songs.ok:
@@ -305,7 +305,7 @@ async def ytmusic(client, message: Message):
     global is_downloading
     if is_downloading:
         await message.reply_text(
-            "Another download is in progress, try again after sometime."
+            "𝐀𝐧𝐨𝐭𝐡𝐞𝐫 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐈𝐬 𝐈𝐧 𝐏𝐫𝐨𝐠𝐫𝐞𝐬𝐬, 𝐓𝐫𝐲 𝐀𝐠𝐢𝐧 𝐀𝐟𝐭𝐞𝐫 𝐒𝐨𝐦𝐞𝐓𝐢𝐦𝐞."
         )
         return
 
@@ -315,7 +315,7 @@ async def ytmusic(client, message: Message):
         message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait.`"
     )
     if not urlissed:
-        await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
+        await pablo.edit("𝐈𝐧𝐚𝐯𝐥𝐢𝐝 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 𝐒𝐲𝐭𝐚𝐱, 𝐏𝐥𝐞𝐚𝐬 𝐂𝐡𝐞𝐜𝐤 𝐇𝐞𝐥𝐩 𝐌𝐞𝐧𝐮 𝐓𝐨 𝐊𝐧𝐨𝐰 𝐌𝐨𝐫𝐞!")
         return
 
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
@@ -349,14 +349,14 @@ async def ytmusic(client, message: Message):
 
             if duration > DURATION_LIMIT:
                 await pablo.edit(
-                    f"❌ Videos longer than {DURATION_LIMIT} minute(s) aren't allowed, the provided video is {duration} minute(s)"
+                    f"❌ 𝐕𝐢𝐝𝐨 𝐋𝐨𝐧𝐠𝐞𝐫 𝐓𝐡𝐚𝐧 {DURATION_LIMIT} 𝐌𝐢𝐧𝐮𝐭𝐞(𝐬) 𝐀𝐫𝐞𝐧'𝐭 𝐀𝐥𝐥𝐨𝐰𝐞𝐝, 𝐓𝐡𝐞 𝐏𝐫𝐨𝐯𝐢𝐝𝐞𝐝 𝐕𝐢𝐝𝐞𝐨 𝐈𝐬 {duration} 𝐌𝐢𝐧𝐮𝐭𝐞(s)"
                 )
                 is_downloading = False
                 return
             ytdl_data = ytdl.extract_info(url, download=True)
 
     except Exception:
-        # await pablo.edit(event, f"**Failed To Download** \n**Error :** `{str(e)}`")
+        # await pablo.edit(event, f"**𝐅𝐚𝐢𝐥𝐞𝐝 𝐓𝐨 𝐃𝐨𝐰𝐥𝐨𝐚𝐝** \n**𝐄𝐫𝐫𝐨𝐫 :** `{str(e)}`")
         is_downloading = False
         return
 
@@ -375,7 +375,7 @@ async def ytmusic(client, message: Message):
         progress_args=(
             pablo,
             c_time,
-            f"`Uploading {urlissed} Song From YouTube Music!`",
+            f"`𝐔𝐩𝐥𝐨𝐚𝐝𝐢𝐧𝐠 {urlissed} 𝐒𝐨𝐧𝐠 𝐅𝐫𝐨𝐦 𝐘𝐨𝐮𝐓𝐮𝐛𝐞 𝐌𝐮𝐬𝐢𝐜!`",
             file_stark,
         ),
     )

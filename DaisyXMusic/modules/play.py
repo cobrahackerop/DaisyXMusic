@@ -197,15 +197,15 @@ def r_ply(type_):
     mar = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("⏹", "leave"),
-                InlineKeyboardButton("⏸", "puse"),
-                InlineKeyboardButton("▶️", "resume"),
-                InlineKeyboardButton("⏭", "skip"),
+                InlineKeyboardButton("⏹", "𝐋𝐞𝐚𝐯𝐞"),
+                InlineKeyboardButton("⏸", "𝐏𝐮𝐬𝐞"),
+                InlineKeyboardButton("▶️", "𝐑𝐞𝐬𝐮𝐦𝐞"),
+                InlineKeyboardButton("⏭", "𝐒𝐤𝐢𝐩"),
             ],
             [
-                InlineKeyboardButton("Playlist 📖", "playlist"),
+                InlineKeyboardButton("𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 📖", "playlist"),
             ],
-            [InlineKeyboardButton("❌ Close", "cls")],
+            [InlineKeyboardButton("❌ 𝐂𝐥𝐨𝐬𝐞", "cls")],
         ]
     )
     return mar
@@ -220,14 +220,14 @@ async def ee(client, message):
     if stats:
         await message.reply(stats)
     else:
-        await message.reply("No VC instances running in this chat")
+        await message.reply("𝐍𝐨 𝐕𝐜 𝐈𝐧𝐬𝐭𝐚𝐧𝐜𝐞𝐬 𝐑𝐮𝐧𝐧𝐢𝐧𝐠 𝐈𝐧 𝐓𝐡𝐢𝐬 𝐂𝐡𝐚𝐭")
 
 
 @Client.on_message(filters.command("player") & filters.group & ~filters.edited)
 @authorized_users_only
 async def settings(client, message):
     if message.chat.id in DISABLED_GROUPS:
-        await message.reply("Music Player is Disabled")
+        await message.reply("𝐌𝐮𝐬𝐢𝐜 𝐏𝐥𝐚𝐲𝐞𝐫 𝐈𝐬 𝐃𝐢𝐬𝐚𝐛𝐥𝐞𝐝")
         return    
     playing = None
     chat_id = get_chat_id(message.chat)
@@ -256,7 +256,7 @@ async def hfmm(_, message):
         return
     if len(message.command) != 2:
         await message.reply_text(
-            "I only recognize `/musicplayer on` and /musicplayer `off only`"
+            "𝐈 𝐎𝐧𝐥𝐲 𝐑𝐞𝐜𝐨𝐠𝐧𝐢𝐳𝐞  `/𝐌𝐮𝐬𝐢𝐜𝐩𝐥𝐚𝐲𝐞𝐫 𝐨𝐧` 𝐀𝐧𝐝 /𝐌𝐮𝐬𝐢𝐜𝐩𝐥𝐚𝐲𝐞𝐫 `𝐨𝐟𝐟 𝐎𝐧𝐥𝐲`"
         )
         return
     status = message.text.split(None, 1)[1]
@@ -264,26 +264,26 @@ async def hfmm(_, message):
     if status == "ON" or status == "on" or status == "On":
         lel = await message.reply("`Processing...`")
         if not message.chat.id in DISABLED_GROUPS:
-            await lel.edit("Music Player Already Activated In This Chat")
+            await lel.edit("𝐌𝐮𝐬𝐢𝐜 𝐏𝐥𝐚𝐲𝐞𝐫 𝐀𝐥𝐫𝐞𝐝𝐲 𝐀𝐜𝐭𝐢𝐯𝐚𝐭𝐞𝐝 𝐈𝐧 𝐓𝐡𝐢𝐬 𝐂𝐡𝐚𝐭")
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
-            f"Music Player Successfully Enabled For Users In The Chat {message.chat.id}"
+            f"𝐌𝐮𝐬𝐢𝐜 𝐏𝐥𝐚𝐲𝐞𝐫 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐅𝐮𝐥𝐥𝐲 𝐄𝐧𝐚𝐛𝐥𝐞𝐝 𝐅𝐨𝐫 𝐔𝐬𝐞𝐫𝐬 𝐈𝐧 𝐓𝐡𝐞 𝐂𝐡𝐚𝐭 {message.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
-        lel = await message.reply("`Processing...`")
+        lel = await message.reply("`𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠...`")
         
         if message.chat.id in DISABLED_GROUPS:
-            await lel.edit("Music Player Already turned off In This Chat")
+            await lel.edit("𝐌𝐮𝐬𝐢𝐜 𝐏𝐥𝐚𝐲𝐞𝐫 𝐀𝐥𝐫𝐞𝐚𝐝𝐲 𝐓𝐮𝐫𝐧𝐞𝐝 𝐨𝐟𝐟 𝐈𝐧 𝐓𝐡𝐢𝐬 𝐂𝐡𝐚𝐭")
             return
         DISABLED_GROUPS.append(message.chat.id)
         await lel.edit(
-            f"Music Player Successfully Deactivated For Users In The Chat {message.chat.id}"
+            f"𝐌𝐮𝐬𝐢𝐜 𝐏𝐥𝐚𝐲𝐞𝐫 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐅𝐮𝐥𝐥𝐲 𝐃𝐞𝐚𝐜𝐭𝐢𝐯𝐚𝐭𝐞𝐝 𝐅𝐨𝐫 𝐔𝐬𝐞𝐫𝐬 𝐈𝐧 𝐓𝐡𝐞 𝐂𝐡𝐚𝐭 {message.chat.id}"
         )
     else:
         await message.reply_text(
-            "I only recognize `/musicplayer on` and /musicplayer `off only`"
+            "𝐈 𝐎𝐧𝐥𝐲 𝐑𝐞𝐜𝐨𝐠𝐧𝐢𝐳𝐞 `/𝐌𝐮𝐬𝐢𝐜𝐩𝐥𝐚𝐲𝐞𝐫 𝐨𝐧` 𝐀𝐧𝐝 /𝐌𝐮𝐬𝐢𝐜𝐞𝐩𝐥𝐚𝐲𝐞𝐫 `𝐨𝐟𝐟 𝐎𝐧𝐥𝐲`"
         )    
         
 
@@ -342,7 +342,7 @@ async def m_cb(b, cb):
         if (chet_id not in callsmusic.active_chats) or (
             callsmusic.active_chats[chet_id] == "paused"
         ):
-            await cb.answer("Chat is not connected!", show_alert=True)
+            await cb.answer("𝐂𝐡𝐚𝐭 𝐈𝐬 𝐍𝐨𝐭 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝!", show_alert=True)
         else:
             callsmusic.pause(chet_id)
             await cb.answer("Music Paused!")
@@ -354,7 +354,7 @@ async def m_cb(b, cb):
         if (chet_id not in callsmusic.active_chats) or (
             callsmusic.active_chats[chet_id] == "playing"
         ):
-            await cb.answer("Chat is not connected!", show_alert=True)
+            await cb.answer("𝐂𝐡𝐚𝐭 𝐢𝐬 𝐍𝐨𝐭 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝!", show_alert=True)
         else:
             callsmusic.resume(chet_id)
             await cb.answer("Music Resumed!")
@@ -389,7 +389,7 @@ async def m_cb(b, cb):
         if (chet_id not in callsmusic.active_chats) or (
             callsmusic.active_chats[chet_id] == "playing"
         ):
-            await cb.answer("Chat is not connected or already playng", show_alert=True)
+            await cb.answer("𝐂𝐡𝐚𝐭 𝐈𝐬 𝐍𝐨𝐭 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝 𝐎𝐫 𝐀𝐥𝐫𝐞𝐚𝐝𝐲 𝐏𝐥𝐚𝐲𝐢𝐧𝐠", show_alert=True)
         else:
             callsmusic.resume(chet_id)
             await cb.answer("Music Resumed!")
@@ -397,7 +397,7 @@ async def m_cb(b, cb):
         if (chet_id not in callsmusic.active_chats) or (
             callsmusic.active_chats[chet_id] == "paused"
         ):
-            await cb.answer("Chat is not connected or already paused", show_alert=True)
+            await cb.answer("𝐂𝐡𝐚𝐭 𝐈𝐬 𝐍𝐨𝐭 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝 𝐎𝐫 𝐀𝐥𝐫𝐞𝐝𝐲 𝐏𝐚𝐮𝐬𝐞𝐝", show_alert=True)
         else:
             callsmusic.pause(chet_id)
             await cb.answer("Music Paused!")
@@ -411,13 +411,13 @@ async def m_cb(b, cb):
         marr = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("⏹", "leave"),
-                    InlineKeyboardButton("⏸", "puse"),
-                    InlineKeyboardButton("▶️", "resume"),
-                    InlineKeyboardButton("⏭", "skip"),
+                    InlineKeyboardButton("⏹", "𝐋𝐞𝐚𝐯𝐞"),
+                    InlineKeyboardButton("⏸", "𝐏𝐚𝐮𝐬𝐞"),
+                    InlineKeyboardButton("▶️", "𝐑𝐞𝐬𝐮𝐦𝐞"),
+                    InlineKeyboardButton("⏭", "𝐒𝐤𝐢𝐩"),
                 ],
                 [
-                    InlineKeyboardButton("Playlist 📖", "playlist"),
+                    InlineKeyboardButton("Playlist 📖", "𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭"),
                 ],
                 [InlineKeyboardButton("❌ Close", "cls")],
             ]
@@ -427,12 +427,12 @@ async def m_cb(b, cb):
         if qeue:
             qeue.pop(0)
         if chet_id not in callsmusic.active_chats:
-            await cb.answer("Chat is not connected!", show_alert=True)
+            await cb.answer("𝐂𝐡𝐚𝐭 𝐢𝐬 𝐍𝐨𝐭 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝!", show_alert=True)
         else:
             queues.task_done(chet_id)
             if queues.is_empty(chet_id):
                 callsmusic.stop(chet_id)
-                await cb.message.edit("- No More Playlist..\n- Leaving VC!")
+                await cb.message.edit("- 𝐍𝐨 𝐌𝐨𝐫𝐞 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭..\n- 𝐋𝐞𝐚𝐯𝐢𝐧𝐠 𝐕𝐂!")
             else:
                 await callsmusic.set_stream(
                     chet_id, queues.get(chet_id)["file"]
@@ -440,7 +440,7 @@ async def m_cb(b, cb):
                 await cb.answer.reply_text("✅ <b>Skipped</b>")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
-                    f"- Skipped track\n- Now Playing **{qeue[0][0]}**"
+                    f"- Skipped track\n- 𝐍𝐨𝐰 𝐏𝐥𝐚𝐲𝐢𝐧𝐠 **{qeue[0][0]}**"
                 )
 
     else:
@@ -451,9 +451,9 @@ async def m_cb(b, cb):
                 pass
 
             await callsmusic.stop(chet_id)
-            await cb.message.edit("Successfully Left the Chat!")
+            await cb.message.edit("𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐅𝐮𝐥𝐥𝐲 𝐋𝐞𝐟𝐭 𝐓𝐡𝐞 𝐂𝐡𝐚𝐭!")
         else:
-            await cb.answer("Chat is not connected!", show_alert=True)
+            await cb.answer("𝐂𝐡𝐚𝐭 𝐢𝐬 𝐍𝐨𝐭 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝!", show_alert=True)
 
 
 @Client.on_message(command("play") & other_filters)
@@ -462,7 +462,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔄 <b>Processing</b>")
+    lel = await message.reply("🔄 <b>𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠</b>")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -480,24 +480,24 @@ async def play(_, message: Message):
             if administrator == message.from_user.id:
                 if message.chat.title.startswith("Channel Music: "):
                     await lel.edit(
-                        "<b>Remember to add helper to your channel</b>",
+                        "<b>𝐑𝐞𝐦𝐞𝐛𝐞𝐫 𝐓𝐨 𝐀𝐝𝐝  𝐇𝐞𝐥𝐩𝐞𝐫 𝐓𝐨 𝐲𝐨𝐮𝐫 𝐂𝐡𝐚𝐧𝐧𝐞𝐥</b>",
                     )
                     pass
                 try:
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>Add me as admin of yor group first</b>",
+                        "<b>𝐀𝐝𝐝 𝐌𝐞 𝐀𝐬 𝐀𝐝𝐦𝐢𝐧 𝐨𝐟 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐅𝐢𝐫𝐬𝐭</b>",
                     )
                     return
 
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "I joined this group for playing music in VC"
+                        message.chat.id, "𝐀𝐥𝐢𝐳𝐚 𝐌𝐮𝐬𝐢𝐜𝐞 𝐉𝐨𝐢𝐧 𝐓𝐡𝐢𝐬 𝐆𝐫𝐨𝐮𝐩 𝐅𝐨𝐫 𝐏𝐥𝐚𝐲 𝐌𝐮𝐬𝐢𝐜 𝐍𝐨 𝐋𝐚𝐠 𝐀𝐧𝐝 𝐅𝐚𝐬𝐭 𝐏𝐥𝐚𝐲 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐛𝐲 [ᴄᴏʙʀᴀ](t.me/Xd_Lif)"
                     )
                     await lel.edit(
-                        "<b>helper userbot joined your chat</b>",
+                        "<b>𝐇𝐞𝐥𝐩𝐞𝐫 𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐉𝐨𝐢𝐧𝐞𝐝 𝐘𝐨𝐮𝐫 𝐂𝐡𝐚𝐭</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -505,19 +505,19 @@ async def play(_, message: Message):
                 except Exception:
                     # print(e)
                     await lel.edit(
-                        f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
-                        "\n\nOr manually add assistant to your Group and try again</b>",
+                        f"<b>👻 𝐅𝐥𝐨𝐨𝐝 𝐖𝐚𝐢𝐭 𝐄𝐫𝐫𝐨𝐫 👻 \nUser {user.first_name} 𝐂𝐨𝐮𝐥𝐝𝐧'𝐭 𝐉𝐨𝐢𝐧 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐃𝐮𝐞 𝐓𝐨 𝐇𝐞𝐚𝐯𝐲 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐬 𝐅𝐨𝐫 𝐔𝐬𝐞𝐫𝐛𝐨𝐭! 𝐌𝐚𝐤𝐞 𝐒𝐮𝐫𝐞 𝐔𝐬𝐞𝐫 𝐈𝐬 𝐍𝐨𝐭 𝐁𝐚𝐧𝐧𝐞𝐝 𝐈𝐧 𝐆𝐫𝐨𝐮𝐩."
+                        "\n\nOr 𝐌𝐚𝐧𝐮𝐚𝐥𝐥𝐲 𝐀𝐝𝐝 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐀𝐧𝐝 𝐓𝐫𝐲 𝐀𝐠𝐢𝐧</b>",
                     )
     try:
         await USER.get_chat(chid)
         # lmoa = await client.get_chat_member(chid,wew)
     except:
         await lel.edit(
-            f"<i> {user.first_name} Userbot not in this chat, Ask admin to send /play command for first time or add {user.first_name} manually</i>"
+            f"<i> {user.first_name} 𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐍𝐨𝐭 𝐈𝐧 𝐓𝐡𝐢𝐬 𝐂𝐡𝐚𝐭, 𝐀𝐬𝐤 𝐀𝐝𝐦𝐢𝐧 𝐓𝐨 𝐒𝐞𝐧𝐝 /play 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 𝐅𝐨𝐫 𝐅𝐢𝐫𝐬𝐭 𝐓𝐢𝐦𝐞 𝐎𝐫 𝐀𝐝𝐝 {user.first_name} 𝐌𝐚𝐧𝐮𝐚𝐥𝐥𝐲</i>"
         )
         return
     text_links=None
-    await lel.edit("🔎 <b>Finding</b>")
+    await lel.edit("🔎 <b>𝐅𝐢𝐧𝐝𝐢𝐧𝐠</b>")
     if message.reply_to_message:
         if message.reply_to_message.audio:
             pass
@@ -547,16 +547,16 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             await lel.edit(
-                f"❌ Videos longer than {DURATION_LIMIT} minute(s) aren't allowed to play!"
+                f"❌ 𝐕𝐢𝐝𝐞𝐨𝐬 𝐋𝐨𝐧𝐠𝐞𝐫 𝐓𝐡𝐚𝐧 {DURATION_LIMIT} 𝐌𝐢𝐧𝐮𝐭𝐞(𝐬) 𝐀𝐫𝐞𝐧'𝐭 𝐀𝐥𝐥𝐨𝐰𝐞𝐝 𝐓𝐨 𝐩𝐥𝐚𝐲!"
             )
             return
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                    InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                    InlineKeyboardButton("📖 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭", callback_data="playlist"),
+                    InlineKeyboardButton("𝐌𝐞𝐧𝐮 ⏯ ", callback_data="menu"),
                 ],
-                [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+                [InlineKeyboardButton(text="❌ 𝐂𝐥𝐨𝐬𝐞", callback_data="cls")],
             ]
         )
         file_name = get_file_name(audio)
@@ -574,7 +574,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🎵 <b>Processing</b>")
+        await lel.edit("🎵 <b>𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠</b>")
         ydl_opts = {"format": "bestaudio/best"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -591,7 +591,7 @@ async def play(_, message: Message):
 
         except Exception as e:
             await lel.edit(
-                "Song not found.Try another song or maybe spell it properly."
+               "𝐆𝐢𝐯𝐞 𝐌𝐞 𝐒𝐨𝐧𝐠 𝐍𝐚𝐦𝐞 𝐈 𝐖𝐚𝐧𝐭 𝐓𝐨 𝐏𝐥𝐚𝐲 🙄
             )
             print(str(e))
             return
@@ -601,7 +601,7 @@ async def play(_, message: Message):
                 dur += (int(dur_arr[i]) * secmul)
                 secmul *= 60
             if (dur / 60) > DURATION_LIMIT:
-                 await lel.edit(f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!")
+                 await lel.edit(f"❌ 𝐕𝐢𝐝𝐞𝐨𝐬 𝐋𝐨𝐧𝐠𝐞𝐫 𝐓𝐡𝐚𝐧 {DURATION_LIMIT} 𝐌𝐢𝐧𝐮𝐭𝐞𝐬 𝐀𝐫𝐞𝐧'𝐭 𝐀𝐥𝐥𝐨𝐰𝐞𝐝 𝐓𝐨 𝐏𝐥𝐚𝐲!")
                  return
         except:
             pass        
@@ -610,14 +610,14 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                    InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                    InlineKeyboardButton("📖 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭", callback_data="playlist"),
+                    InlineKeyboardButton("𝐌𝐞𝐧𝐮 ⏯ ", callback_data="menu"),
                 ],
                 [
-                    InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                    InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
+                    InlineKeyboardButton(text="🎬 𝐘𝐨𝐮𝐓𝐮𝐛𝐞", url=f"{url}"),
+                    InlineKeyboardButton(text="𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 📥", url=f"{dlurl}"),
                 ],
-                [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+                [InlineKeyboardButton(text="❌ 𝐂𝐥𝐨𝐬𝐞", callback_data="cls")],
             ]
         )
         requested_by = message.from_user.first_name
@@ -628,16 +628,16 @@ async def play(_, message: Message):
         for i in message.command[1:]:
             query += " " + str(i)
         print(query)
-        await lel.edit("🎵 **Processing**")
+        await lel.edit("🎵 **𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠**")
         ydl_opts = {"format": "bestaudio/best"}
         
         try:
           results = YoutubeSearch(query, max_results=5).to_dict()
         except:
-          await lel.edit("Give me something to play")
-        # Looks like hell. Aren't it?? FUCK OFF
+          await lel.edit("𝐆𝐢𝐯𝐞 𝐌𝐞 𝐒𝐨𝐦𝐞𝐭𝐡𝐢𝐧𝐠 𝐓𝐨 𝐏𝐥𝐚𝐲")
+        # 𝐋𝐨𝐨𝐤𝐬 𝐋𝐢𝐤𝐞 𝐇𝐞𝐥𝐥. 𝐀𝐫𝐞𝐧'𝐭 𝐈𝐭?? 𝐅𝐮𝐜𝐤 𝐨𝐟𝐟
         try:
-            toxxt = "**Select the song you want to play**\n\n"
+            toxxt = "**𝐒𝐞𝐥𝐞𝐜𝐭 𝐓𝐡𝐞 𝐒𝐨𝐧𝐠 𝐘𝐨𝐮 𝐖𝐚𝐧𝐭 𝐓𝐨 𝐏𝐥𝐚𝐲**\n\n"
             j = 0
             useer=user_name
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣",]
@@ -668,7 +668,7 @@ async def play(_, message: Message):
             return
             # Returning to pornhub
         except:
-            await lel.edit("No Enough results to choose.. Starting direct play..")
+            await lel.edit("𝐍𝐨 𝐄𝐧𝐨𝐮𝐠𝐡 𝐑𝐞𝐬𝐮𝐥𝐭𝐬 𝐓𝐨 𝐂𝐡𝐨𝐬𝐬𝐞.. 𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐃𝐢𝐫𝐞𝐜𝐭 𝐏𝐥𝐚𝐲..")
                         
             # print(results)
             try:
@@ -684,7 +684,7 @@ async def play(_, message: Message):
 
             except Exception as e:
                 await lel.edit(
-                    "Song not found.Try another song or maybe spell it properly."
+                    "𝐆𝐢𝐯𝐞 𝐌𝐞 𝐒𝐨𝐧𝐠 𝐍𝐚𝐦𝐞 𝐈 𝐖𝐡𝐚𝐧𝐭 𝐓𝐨 𝐏𝐥𝐚𝐲🙄."
                 )
                 print(str(e))
                 return
@@ -694,7 +694,7 @@ async def play(_, message: Message):
                     dur += (int(dur_arr[i]) * secmul)
                     secmul *= 60
                 if (dur / 60) > DURATION_LIMIT:
-                     await lel.edit(f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!")
+                     await lel.edit(f"❌ 𝐕𝐢𝐝𝐞𝐨𝐬 𝐋𝐨𝐧𝐠𝐫𝐫 𝐓𝐡𝐚𝐧 {DURATION_LIMIT} 𝐌𝐢𝐧𝐮𝐭𝐞𝐬 𝐀𝐫𝐞𝐧'𝐭 𝐀𝐥𝐥𝐨𝐰𝐞𝐝 𝐓𝐨 𝐏𝐥𝐚𝐲!")
                      return
             except:
                 pass
@@ -703,14 +703,14 @@ async def play(_, message: Message):
             keyboard = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                        InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                        InlineKeyboardButton("📖 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭", callback_data="playlist"),
+                        InlineKeyboardButton("𝐌𝐞𝐧𝐮 ⏯ ", callback_data="menu"),
                     ],
                     [
-                        InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                        InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
+                        InlineKeyboardButton(text="🎬 𝐘𝐨𝐮𝐓𝐮𝐛𝐞", url=f"{url}"),
+                        InlineKeyboardButton(text="𝐃𝐨𝐰𝐧𝐋𝐨𝐚𝐝 📥", url=f"{dlurl}"),
                     ],
-                    [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+                    [InlineKeyboardButton(text="❌ 𝐂𝐥𝐨𝐬𝐞", callback_data="cls")],
                 ]
             )
             requested_by = message.from_user.first_name
@@ -749,7 +749,7 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music 😎".format(
+            caption="▶️ <b>Playing</b> 𝐇𝐞𝐫𝐞 𝐓𝐡𝐞 𝐒𝐨𝐧𝐠 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐞𝐝 𝐁𝐲 {} 𝐕𝐢𝐚 𝐘𝐨𝐮𝐓𝐮𝐛𝐞 𝐌𝐮𝐬𝐢𝐜 😎".𝐅𝐨𝐫𝐦𝐚𝐭(
                 message.from_user.mention()
             ),
         )
@@ -762,7 +762,7 @@ async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔄 <b>Processing</b>")
+    lel = await message.reply("🔄 <b>𝐀𝐥𝐢𝐳𝐚 𝐈𝐬 𝐏𝐥𝐚𝐲𝐢𝐧𝐠 𝐘𝐭</b>")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -780,24 +780,24 @@ async def ytplay(_, message: Message):
             if administrator == message.from_user.id:
                 if message.chat.title.startswith("Channel Music: "):
                     await lel.edit(
-                        "<b>Remember to add helper to your channel</b>",
+                        "<b>𝐑𝐞𝐦𝐞𝐦𝐛𝐞𝐫 𝐓𝐨 𝐀𝐝𝐝 𝐇𝐞𝐥𝐩𝐞𝐫 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐂𝐡𝐚𝐧𝐧𝐞𝐥</b>",
                     )
                     pass
                 try:
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>Add me as admin of yor group first</b>",
+                        "<b>𝐀𝐝𝐝 𝐌𝐞 𝐀𝐬 𝐀𝐝𝐦𝐢𝐧 𝐨𝐟 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐅𝐢𝐫𝐬𝐭</b>",
                     )
                     return
 
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "I joined this group for playing music in VC"
+                        message.chat.id, "𝐀𝐥𝐢𝐳𝐚 𝐌𝐮𝐬𝐢𝐜 𝐁𝐨𝐭 𝐉𝐨𝐢𝐧 𝐓𝐡𝐢𝐬 𝐆𝐫𝐨𝐮𝐩 𝐅𝐨𝐫 𝐏𝐥𝐚𝐲 𝐌𝐮𝐬𝐢𝐜 𝐍𝐨 𝐋𝐚𝐠 𝐀𝐧𝐝 𝐅𝐚𝐬𝐭 𝐏𝐥𝐚𝐲 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐛𝐲 [ᴀɪsʜ](t.me/aish_jaan_0)"
                     )
                     await lel.edit(
-                        "<b>helper userbot joined your chat</b>",
+                        "<b>𝐇𝐞𝐥𝐩𝐞𝐫 𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐉𝐨𝐢𝐧𝐞𝐝 𝐘𝐨𝐮𝐫 𝐂𝐡𝐚𝐭</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -805,8 +805,8 @@ async def ytplay(_, message: Message):
                 except Exception:
                     # print(e)
                     await lel.edit(
-                        f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
-                        "\n\nOr manually add assistant to your Group and try again</b>",
+                        f"<b>👻 𝐅𝐥𝐨𝐨𝐝 𝐖𝐚𝐢𝐭 𝐄𝐫𝐫𝐨𝐫 👻 \nUser {user.first_name} 𝐂𝐨𝐮𝐥𝐝𝐧'𝐭 𝐉𝐨𝐢𝐧 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐃𝐮𝐞 𝐓𝐨 𝐇𝐞𝐯𝐲 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐬 𝐅𝐨𝐫 𝐔𝐬𝐞𝐫𝐁𝐨𝐭! 𝐌𝐚𝐤𝐞 𝐒𝐮𝐫𝐞 𝐔𝐬𝐞𝐫 𝐈𝐬 𝐍𝐨𝐭 𝐁𝐚𝐧𝐧𝐞𝐝 𝐈𝐧 𝐆𝐫𝐨𝐮𝐩."
+                        "\n\nOr 𝐌𝐚𝐧𝐮𝐚𝐥𝐥𝐲 𝐀𝐝𝐝 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐀𝐧𝐝 𝐓𝐫𝐲 𝐀𝐠𝐢𝐧</b>",
                     )
     try:
         await USER.get_chat(chid)
@@ -816,7 +816,7 @@ async def ytplay(_, message: Message):
             f"<i> {user.first_name} Userbot not in this chat, Ask admin to send /play command for first time or add {user.first_name} manually</i>"
         )
         return
-    await lel.edit("🔎 <b>Finding</b>")
+    await lel.edit("🔎 <b>𝐅𝐢𝐧𝐝𝐢𝐧𝐠</b>")
     user_id = message.from_user.id
     user_name = message.from_user.first_name
      
@@ -825,7 +825,7 @@ async def ytplay(_, message: Message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    await lel.edit("🎵 <b>Processing</b>")
+    await lel.edit("🎵 <b>𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠</b>")
     ydl_opts = {"format": "bestaudio/best"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -842,7 +842,7 @@ async def ytplay(_, message: Message):
 
     except Exception as e:
         await lel.edit(
-            "Song not found.Try another song or maybe spell it properly."
+            "𝐆𝐢𝐯𝐞 𝐌𝐞 𝐒𝐨𝐧𝐠 𝐍𝐚𝐦𝐞 𝐈 𝐖𝐡𝐚𝐧𝐭 𝐓𝐨 𝐏𝐥𝐚𝐲 🙄."
         )
         print(str(e))
         return
@@ -852,7 +852,7 @@ async def ytplay(_, message: Message):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
         if (dur / 60) > DURATION_LIMIT:
-             await lel.edit(f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!")
+             await lel.edit(f"❌ 𝐕𝐢𝐝𝐞𝐨𝐬 𝐋𝐨𝐧𝐠𝐞𝐫 𝐓𝐡𝐚𝐧 {DURATION_LIMIT} 𝐌𝐢𝐧𝐮𝐭𝐞𝐬 𝐀𝐫𝐞𝐧'𝐭 𝐀𝐥𝐥𝐨𝐰𝐞𝐝 𝐓𝐨 𝐏𝐥𝐚𝐲!")
              return
     except:
         pass    
@@ -861,14 +861,14 @@ async def ytplay(_, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                InlineKeyboardButton("📖 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭", callback_data="playlist"),
+                InlineKeyboardButton("𝐌𝐞𝐧𝐮 ⏯ ", callback_data="menu"),
             ],
             [
-                InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
+                InlineKeyboardButton(text="🎬 𝐘𝐨𝐮𝐓𝐮𝐛𝐞", url=f"{url}"),
+                InlineKeyboardButton(text=𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 📥", url=f"{dlurl}"),
             ],
-            [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+            [InlineKeyboardButton(text="❌ 𝐂𝐥𝐨𝐬𝐞", callback_data="cls")],
         ]
     )
     requested_by = message.from_user.first_name
@@ -920,13 +920,13 @@ async def jiosaavn(client: Client, message_: Message):
     global que
     if message_.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message_.reply("🔄 <b>Processing</b>")
+    lel = await message_.reply("🔄 <b>𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠</b>")
     administrators = await get_administrators(message_.chat)
     chid = message_.chat.id
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "DaisyMusic"
+        user.first_name = "𝐀𝐥𝐢𝐳𝐚 𝐌𝐮𝐬𝐢𝐜"
     usar = user
     wew = usar.id
     try:
@@ -937,24 +937,24 @@ async def jiosaavn(client: Client, message_: Message):
             if administrator == message_.from_user.id:
                 if message_.chat.title.startswith("Channel Music: "):
                     await lel.edit(
-                        "<b>Remember to add helper to your channel</b>",
+                        "<b>𝐑𝐞𝐦𝐞𝐦𝐛𝐞𝐫 𝐓𝐨 𝐀𝐝𝐝 𝐇𝐞𝐥𝐩𝐞𝐫 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐂𝐡𝐚𝐧𝐧𝐞𝐥</b>",
                     )
                     pass
                 try:
                     invitelink = await client.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>Add me as admin of yor group first</b>",
+                        "<b> 𝐀𝐝𝐝 𝐌𝐞 𝐀𝐬 𝐀𝐝𝐦𝐢𝐧 𝐨𝐟 𝐘𝐨𝐫 𝐆𝐫𝐨𝐮𝐩 𝐅𝐢𝐫𝐬𝐭</b>",
                     )
                     return
 
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message_.chat.id, "I joined this group for playing music in VC"
+                        message_.chat.id, "𝐈 𝐉𝐨𝐢𝐧𝐞𝐝 𝐓𝐡𝐢𝐬 𝐆𝐫𝐨𝐮𝐩 𝐅𝐨𝐫 𝐏𝐥𝐚𝐲𝐢𝐧𝐠 𝐌𝐮𝐬𝐢𝐜 𝐈𝐧 𝐕𝐂"
                     )
                     await lel.edit(
-                        "<b>helper userbot joined your chat</b>",
+                        "<b>𝐇𝐞𝐥𝐩𝐞𝐫 𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐉𝐨𝐢𝐧𝐞𝐝 𝐘𝐨𝐮𝐫 𝐂𝐡𝐚𝐭</b>",
                     )
 
                 except UserAlreadyParticipant:

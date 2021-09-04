@@ -33,7 +33,7 @@ async def addchannel(client, message):
         invitelink = await client.export_chat_invite_link(chid)
     except:
         await message.reply_text(
-            "<b>Add me as admin of yor group first</b>",
+            "<b>𝐀𝐝𝐝 𝐌𝐞 𝐀𝐬 𝐀𝐝𝐦𝐢𝐧 𝐨𝐅 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐅𝐢𝐫𝐬𝐭</b>",
         )
         return
 
@@ -44,7 +44,7 @@ async def addchannel(client, message):
 
     try:
         await USER.join_chat(invitelink)
-        await USER.send_message(message.chat.id, "I joined here as you requested")
+        await USER.send_message(message.chat.id, "𝐀𝐥𝐢𝐳𝐚 𝐌𝐮𝐬𝐢𝐜 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝐉𝐨𝐢𝐧𝐞𝐝 𝐓𝐡𝐢𝐬 𝐆𝐫𝐨𝐮𝐩 𝐏𝐥𝐚𝐲 𝐌𝐮𝐬𝐢𝐜 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 [★ᴄᴏʙʀᴀ](t.me/Xd_Lif)")
     except UserAlreadyParticipant:
         await message.reply_text(
             "<b>helper already in your chat</b>",
@@ -52,8 +52,8 @@ async def addchannel(client, message):
     except Exception as e:
         print(e)
         await message.reply_text(
-            f"<b>🛑 Flood Wait Error 🛑 \n User {user.first_name} couldn't join your group due to heavy join requests for userbot! Make sure user is not banned in group."
-            "\n\nOr manually add @DaisyXhelper to your Group and try again</b>",
+            f"<b>👻 𝐅𝐥𝐨𝐨𝐝 𝐖𝐚𝐢𝐭 𝐄𝐫𝐫𝐨𝐫 👻 \n 𝐔𝐬𝐞𝐫 {user.first_name} 𝐂𝐨𝐮𝐥𝐝𝐧'𝐓 𝐉𝐨𝐢𝐧 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐃𝐮𝐞 𝐓𝐨 𝐇𝐞𝐚𝐯𝐲 𝐉𝐨𝐢𝐧 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐞𝐝 𝐅𝐨𝐫 𝐔𝐬𝐞𝐫𝐁𝐨𝐭! 𝐌𝐚𝐤𝐞 𝐒𝐮𝐫𝐞 𝐔𝐬𝐞𝐫 𝐈𝐬 𝐍𝐨𝐭 𝐁𝐚𝐧𝐧𝐞𝐝 𝐈𝐧 𝐆𝐫𝐨𝐮𝐩."
+            "\n\nOr 𝐌𝐚𝐧𝐮𝐚𝐥𝐥𝐲 𝐀𝐝𝐝 @AlizaProBot 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐓𝐫𝐲 𝐀𝐠𝐢𝐧</b>",
         )
         return
     await message.reply_text(
@@ -68,8 +68,8 @@ async def rem(USER, message):
         await USER.leave_chat(message.chat.id)
     except:
         await message.reply_text(
-            f"<b>User couldn't leave your group! May be floodwaits."
-            "\n\nOr manually kick me from to your Group</b>",
+            f"<b>𝐔𝐬𝐞𝐫 𝐂𝐨𝐮𝐥𝐝𝐧'𝐭 𝐋𝐞𝐚𝐯𝐞 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩! 𝐌𝐚𝐲 𝐁𝐞 𝐅𝐥𝐨𝐨𝐝𝐖𝐚𝐢𝐭𝐬."
+            "\n\nOr 𝐌𝐚𝐧𝐮𝐚𝐥𝐥𝐲 𝐊𝐢𝐜𝐤 𝐌𝐞 𝐅𝐫𝐨𝐦 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩</b>",
         )
         return
     
@@ -78,7 +78,7 @@ async def bye(client, message):
     if message.from_user.id in SUDO_USERS:
         left=0
         failed=0
-        lol = await message.reply("Assistant Leaving all chats")
+        lol = await message.reply("𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝐀𝐥𝐥 𝐋𝐞𝐚𝐯𝐢𝐧𝐠 𝐀𝐥𝐥 𝐂𝐡𝐚𝐭𝐬")
         async for dialog in USER.iter_dialogs():
             try:
                 await USER.leave_chat(dialog.chat.id)
@@ -107,7 +107,7 @@ async def addcchannel(client, message):
         invitelink = await client.export_chat_invite_link(chid)
     except:
         await message.reply_text(
-            "<b>Add me as admin of yor channel first</b>",
+            "<b>𝐀𝐝𝐝 𝐌𝐞 𝐀𝐬 𝐀𝐝𝐦𝐢𝐧 𝐨𝐅 𝐘𝐨𝐮𝐫 Channel 𝐅𝐢𝐫𝐬𝐭</b>",
         )
         return
 

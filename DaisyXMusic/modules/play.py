@@ -962,15 +962,15 @@ async def jiosaavn(client: Client, message_: Message):
                 except Exception:
                     # print(e)
                     await lel.edit(
-                        f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
-                        "\n\nOr manually add @DaisyXmusic to your Group and try again</b>",
+                        f"<b>👻 𝐅𝐥𝐨𝐨𝐝 𝐖𝐚𝐢𝐭 𝐄𝐫𝐫𝐨𝐫 👻 \n𝐔𝐬𝐞𝐫 {user.first_name} 𝐂𝐨𝐮𝐥𝐝𝐧'𝐭 𝐉𝐨𝐢𝐧 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐃𝐮𝐞 𝐓𝐨 𝐇𝐞𝐚𝐯𝐲 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐬 𝐅𝐨𝐫 𝐔𝐬𝐞𝐫𝐛𝐨𝐭!𝐌𝐚𝐤𝐞 𝐒𝐮𝐫𝐞 𝐔𝐬𝐞𝐫 𝐈𝐬 𝐍𝐨𝐭 𝐁𝐚𝐧𝐧𝐞𝐝 𝐈𝐧 𝐆𝐫𝐨𝐮𝐩."
+                        "\n\nOr 𝐌𝐚𝐧𝐮𝐚𝐥𝐥𝐲 𝐀𝐝𝐝 @AlizaProBot 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩 𝐀𝐧𝐝 𝐓𝐫𝐲 𝐀𝐠𝐢𝐧</b>",
                     )
     try:
         await USER.get_chat(chid)
         # lmoa = await client.get_chat_member(chid,wew)
     except:
         await lel.edit(
-            "<i> helper Userbot not in this chat, Ask admin to send /play command for first time or add assistant manually</i>"
+            "<i> 𝐇𝐞𝐥𝐩𝐞𝐫 𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐍𝐨𝐭 𝐈𝐧 𝐓𝐡𝐢𝐬 𝐂𝐡𝐚𝐭, 𝐀𝐬𝐤 𝐀𝐝𝐦𝐢𝐧 𝐓𝐨 𝐒𝐞𝐧𝐝 /play 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 𝐅𝐨𝐫 𝐅𝐢𝐫𝐬𝐭 𝐓𝐢𝐦𝐞 𝐨𝐫 𝐀𝐝𝐝 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝐌𝐚𝐧𝐮𝐚𝐥𝐥𝐲</i>"
         )
         return
     requested_by = message_.from_user.first_name
@@ -978,7 +978,7 @@ async def jiosaavn(client: Client, message_: Message):
     text = message_.text.split(" ", 1)
     query = text[1]
     res = lel
-    await res.edit(f"Searching 🔍 for `{query}` on jio saavn")
+    await res.edit(f"𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 🔍 𝐅𝐨𝐫 `{query}` 𝐎𝐧 𝐉𝐢𝐨 𝐒𝐚𝐚𝐯𝐧")
     try:
         songs = await arq.saavn(query)
         if not songs.ok:
@@ -990,28 +990,28 @@ async def jiosaavn(client: Client, message_: Message):
         sthumb = songs.result[0].image
         sduration = int(songs.result[0].duration)
     except Exception as e:
-        await res.edit("Found Literally Nothing!, You Should Work On Your English.")
+        await res.edit("𝐅𝐨𝐮𝐧𝐝 𝐋𝐢𝐭𝐞𝐫𝐚𝐥𝐥𝐲 𝐍𝐨𝐭𝐡𝐢𝐧𝐠!, 𝐘𝐨𝐮 𝐒𝐡𝐨𝐮𝐥𝐝 𝐖𝐨𝐫𝐤 𝐎𝐧 𝐘𝐨𝐮𝐫 𝐄𝐧𝐠𝐥𝐢𝐬𝐡.")
         print(str(e))
         return
     try:    
         duuration= round(sduration / 60)
         if duuration > DURATION_LIMIT:
-            await cb.message.edit(f"Music longer than {DURATION_LIMIT}min are not allowed to play")
+            await cb.message.edit(f"𝐌𝐮𝐬𝐢𝐜 𝐋𝐨𝐧𝐠𝐞𝐫 𝐓𝐡𝐚𝐧 {DURATION_LIMIT}𝐌𝐢𝐧 𝐀𝐫𝐞 𝐍𝐨𝐭 𝐀𝐥𝐥𝐨𝐰𝐞𝐝 𝐓𝐨 𝐏𝐥𝐚𝐲")
             return
     except:
         pass    
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                InlineKeyboardButton("📖 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭", callback_data="playlist"),
+                InlineKeyboardButton("𝐌𝐞𝐧𝐮 ⏯ ", callback_data="menu"),
             ],
             [
                 InlineKeyboardButton(
-                    text="Join Updates Channel", url=f"https://t.me/{updateschannel}"
+                    text="𝐉𝐨𝐢𝐧 𝐔𝐩𝐝𝐚𝐭𝐞𝐬 𝐂𝐡𝐚𝐧𝐧𝐞𝐥", url=f"https://t.me/{updateschannel}"
                 )
             ],
-            [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+            [InlineKeyboardButton(text="❌ 𝐂𝐥𝐨𝐬𝐞", callback_data="cls")],
         ]
     )
     file_path = await convert(wget.download(slink))
@@ -1029,11 +1029,11 @@ async def jiosaavn(client: Client, message_: Message):
             chat_id=message_.chat.id,
             reply_markup=keyboard,
             photo="final.png",
-            caption=f"✯{bn}✯=#️⃣ Queued at position {position}",
+            caption=f"✯{bn}✯=#️⃣ 𝐐𝐮𝐞𝐮𝐞𝐝 𝐀𝐓 𝐏𝐨𝐬𝐢𝐭𝐢𝐨𝐧 {position}",
         )
 
     else:
-        await res.edit_text(f"{bn}=▶️ Playing.....")
+        await res.edit_text(f"{bn}=▶️ 𝐏𝐥𝐚𝐲𝐢𝐧𝐠.....")
         que[chat_id] = []
         qeue = que.get(chat_id)
         s_name = sname
@@ -1044,7 +1044,7 @@ async def jiosaavn(client: Client, message_: Message):
         try:
             await callsmusic.set_stream(chat_id, file_path)
         except:
-            res.edit("Group call is not connected of I can't join it")
+            res.edit("𝐆𝐫𝐨𝐮𝐩 𝐂𝐀𝐥𝐥 𝐈𝐬 𝐍𝐨𝐭 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝 𝐎𝐟 𝐈 𝐂𝐚𝐧'𝐓 𝐉𝐨𝐢𝐧 𝐈𝐭")
             return
     await res.edit("Generating Thumbnail.")
     await generate_cover(requested_by, sname, ssingers, sduration, sthumb)
@@ -1069,13 +1069,13 @@ async def lol_cb(b, cb):
     try:
         x,query,useer_id = typed_.split("|")      
     except:
-        await cb.message.edit("Song Not Found")
+        await cb.message.edit("𝐒𝐨𝐧𝐠 𝐍𝐨𝐭 𝐅𝐨𝐮𝐧𝐝")
         return
     useer_id = int(useer_id)
     if cb.from_user.id != useer_id:
-        await cb.answer("You ain't the person who requested to play the song!", show_alert=True)
+        await cb.answer("𝐘𝐨𝐮 𝐀𝐢𝐧'𝐭 𝐓𝐡𝐞 𝐏𝐞𝐫𝐬𝐨𝐧 𝐖𝐡𝐨 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐞𝐝 𝐓𝐨 𝐏𝐥𝐚𝐲 𝐓𝐡𝐞 𝐒𝐨𝐧𝐠!", show_alert=True)
         return
-    await cb.message.edit("Hang On... Player Starting")
+    await cb.message.edit("𝐇𝐚𝐧𝐠 𝐎𝐧... 𝐏𝐥𝐚𝐲𝐞𝐫 𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠")
     x=int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
@@ -1096,7 +1096,7 @@ async def lol_cb(b, cb):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
         if (dur / 60) > DURATION_LIMIT:
-             await cb.message.edit(f"Music longer than {DURATION_LIMIT}min are not allowed to play")
+             await cb.message.edit(f"𝐌𝐮𝐬𝐢𝐜 𝐋𝐨𝐧𝐠𝐞𝐫 𝐓𝐡𝐚𝐧 {DURATION_LIMIT}𝐌𝐢𝐧 𝐀𝐫𝐞 𝐍𝐨𝐭 𝐀𝐥𝐥𝐨𝐰𝐞𝐝 𝐓𝐨 𝐏𝐥𝐚𝐲")
              return
     except:
         pass
@@ -1112,14 +1112,14 @@ async def lol_cb(b, cb):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
-                InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                InlineKeyboardButton("📖 𝐏𝐥𝐚𝐲𝐋𝐢𝐬𝐭", callback_data="playlist"),
+                InlineKeyboardButton("𝐌𝐞𝐧𝐮 ⏯ ", callback_data="menu"),
             ],
             [
-                InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
+                InlineKeyboardButton(text="🎬 𝐘𝐨𝐮𝐓𝐮𝐛𝐞", url=f"{url}"),
+                InlineKeyboardButton(text="𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 📥", url=f"{dlurl}"),
             ],
-            [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+            [InlineKeyboardButton(text="❌ 𝐂𝐥𝐨𝐬𝐞", callback_data="cls")],
         ]
     )
     requested_by = useer_name
@@ -1161,6 +1161,6 @@ async def lol_cb(b, cb):
         await b.send_photo(chat_id,
             photo="final.png",
             reply_markup=keyboard,
-            caption=f"▶️ <b>Playing</b> here the song requested by {r_by.mention} via Youtube Music 😎",
+            caption=f"▶️ <b>𝐏𝐥𝐚𝐲𝐢𝐧𝐠</b> 𝐇𝐞𝐫𝐞 𝐓𝐡𝐞 𝐒𝐨𝐧𝐠 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐞𝐝 𝐁𝐲 {r_by.mention} 𝐕𝐢𝐚 𝐘𝐨𝐮𝐓𝐮𝐛𝐞 𝐌𝐮𝐬𝐢𝐜 😎",
         )
         os.remove("final.png")
